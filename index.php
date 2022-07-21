@@ -4,7 +4,7 @@
 
 <div class="container p-4">
 
-  <div >
+  <div>
     <!-- MESSAGES -->
 
     <?php if (isset($_SESSION['message'])) { ?>
@@ -79,49 +79,52 @@
 
 
 
- 
-    <table class="table table-striped table-hover table-bordered mt-5">
-      <thead class="table-dark">
+
+  <table class="table table-striped table-hover table-bordered mt-5">
+    <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Nome da Empresa</th>
+        <th>Telefone</th>
+        <th>Data de Vencimento</th>
+        <th>Status</th>
+        <th>Observação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <?php
+      $query = "SELECT * FROM empresa";
+      $result_empresa = mysqli_query($conn, $query);
+
+      while ($row = mysqli_fetch_assoc($result_empresa)) { ?>
         <tr>
-          <th>Id</th>
-          <th>Nome da Empresa</th>
-          <th>Telefone</th>
-          <th>Data de Vencimento</th>
-          <th>Status</th>
-          <th>Observação</th>
-          <th>Ações</th>
+          <td><?php echo $row['id']; ?></td>
+          <td><?php echo $row['nome']; ?></td>
+          <td><?php echo $row['telefone']; ?></td>
+          <td><?php echo $row['data']; ?></td>
+          <td><?php echo $row['status']; ?></td>
+          <td><?php echo $row['observacao']; ?></td>
+
+
+          <td>
+            <a href="view.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a href="edit.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary">
+              <i class="fas fa-marker"></i>
+            </a>
+            <a href="delete_empresa.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-
-        <?php
-        $query = "SELECT * FROM empresa";
-        $result_empresa = mysqli_query($conn, $query);
-
-        while ($row = mysqli_fetch_assoc($result_empresa)) { ?>
-          <tr>
-            <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['nome']; ?></td>
-            <td><?php echo $row['telefone']; ?></td>
-            <td><?php echo $row['data']; ?></td>
-            <td><?php echo $row['status']; ?></td>
-            <td><?php echo $row['observacao']; ?></td>
+      <?php } ?>
+    </tbody>
+  </table>
 
 
-            <td>
-              <a href="edit.php?id=<?php echo $row['id'] ?>" class="btn btn-secondary">
-                <i class="fas fa-marker"></i>
-              </a>
-              <a href="delete_empresa.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">
-                <i class="far fa-trash-alt"></i>
-              </a>
-            </td>
-          </tr>
-        <?php } ?>
-      </tbody>
-    </table>
-
-
-        </div>
+</div>
 
 <?php include('includes/footer.php'); ?>

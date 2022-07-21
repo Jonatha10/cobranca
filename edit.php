@@ -43,18 +43,23 @@ if (isset($_POST['update'])) {
             <div class="card card-body">
                 <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
                     <div class="form-group">
+                    <label for="nome">Nome</label>
                         <input name="nome" type="text" class="form-control" value="<?php echo $nome; ?>">
                     </div>
                     <div class="form-group">
+                    <label for="telefone">Telefone</label>
                         <input name="telefone" type="text" class="form-control" value="<?php echo $telefone; ?>">
                     </div>
                     <div class="form-group">
+                    <label for="data">Data</label>
                         <input name="data" type="text" class="form-control" value="<?php echo $data; ?>">
                     </div>
                     <div class="form-group">
+                    <label for="status">Status</label>
                         <input name="status" type="text" class="form-control" value="<?php echo $status; ?>">
                     </div>
                     <div class="form-group">
+                    <label for="observacao">Observação</label>
                         <textarea name="observacao" class="form-control" cols="30" rows="10"><?php echo $observacao; ?></textarea>
                     </div>
                     <button class="btn-success" name="update">
