@@ -62,9 +62,13 @@ if (isset($_POST['update'])) {
                     <label for="observacao">Observação</label>
                         <textarea name="observacao" class="form-control" cols="30" rows="10"><?php echo $observacao; ?></textarea>
                     </div>
-                    <button class="btn-success" name="update">
-                        Update
+                    <div class="modal-footer pt-4">
+                    <a href="index.php" class="btn btn-secondary">Voltar</a>
+                    <button class="btn btn-success" name="update">
+                        ATUALIZAR
                     </button>
+                    </div>
+
 
 
 
